@@ -1,9 +1,9 @@
 <h4>Formularios <small>template</small></h4>
 <hr>
-<form (ngSubmit)="guardar(forma)" #forma="ngForm" novalidate>
+<form (ngSubmit)="guardar(forma)" #forma="ngForm" novalidate="">
   <div>
 
-    <div class="form-group row">
+    <div class="form-group row" [ngClass]="{ 'is-invalid': (nombre.touched && (nombre.errors?.minlength || nombre.errors?.required))}">
       <label class="col-2 col-form-label">Nombre</label>
       <div class="col-8">
         <input class="form-control"
@@ -60,10 +60,22 @@
       </div>
     </div>
   </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Pais</label>
+    <div class="col-md-8">
+      <select class="form-control" name="pais" [(ngModel)]="usuario.pais">
+        <option value="">Seleccione un pais</option>
+        <option *ngFor="let pais of paises" [value]="pais.codigo">{{ pais.pais }}</option>
+      </select>
+    </div>
+  </div>
+
+
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">
-      <button type="submit" class="btn btn-outline-primary">
+      <button [disabled]="!forma.valid" type="submit" class="btn btn-outline-primary">
         Guardar
       </button>
     </div>
