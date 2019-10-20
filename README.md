@@ -14,3 +14,5 @@ In this application uses:
 - Asynchronous validator
 - Custom validators (personalized)
 - ValueChanges to detect when a value(s) in the form change
+
+by: Luis Antonio Feregrino
